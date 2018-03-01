@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,11 +20,22 @@ public class Cart {
     // inverseJoinColumns属性定义了中间表与另外一端(Item)的外键关系。
 
     @ManyToMany
-//    @JoinTable(name = "t_cart_item",
-//            joinColumns = { @JoinColumn(name = "cartId") },
-//            inverseJoinColumns = {@JoinColumn(name = "itemId") }
-//            )
+    @JoinTable(name = "cart_item",
+            joinColumns = { @JoinColumn(name = "cart_id") },
+            inverseJoinColumns = {@JoinColumn(name = "item_id") }
+            )
+    //自己写sql必须定义中间表
+
     private Set<Item> items;
+
+    public Cart(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Cart(){
+
+    }
 
     public Long getId() {
         return id;

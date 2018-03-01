@@ -11,9 +11,20 @@ public class Category {
     private Long id;
     private String name;
 
+    public Category(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Category(){
+
+    }
+
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "category_id")
     private List<Item> itemList;
+
+
 
     public Long getId() {
         return id;

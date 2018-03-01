@@ -3,7 +3,6 @@ services:
   db:
     image: mysql:5.7
     container_name: cart
-    restart: always
     ports:
       - 3306:3306
     environment:
@@ -15,5 +14,20 @@ services:
       main:
         aliases:
           - cart
+
+  mysql:
+    image: mysql:5.7
+    container_name: cartTest
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=cartTest
+      - MYSQL_ROOT_PASSWORD=root
+    command: ['mysqld', '--character-set-server=utf8']
+    networks:
+      main:
+        aliases:
+          - cartTest
 networks:
   main:
