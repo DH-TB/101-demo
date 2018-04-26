@@ -16,7 +16,7 @@ public class Category {
         this.name = name;
     }
 
-    public Category(){
+    public Category() {
 
     }
 
@@ -24,6 +24,14 @@ public class Category {
     @JoinColumn(name = "category_id")
     private List<Item> itemList;
 
+
+//    @OneToOne(cascade = CascadeType.ALL)//City是关系的维护端
+//    @JoinTable(name = "item_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "item_id"))
+//    //通过关联表来保存一对一的关系。
+//    //定义了一张叫"city_mayor"的表,
+//    //joinColumns定义一个外键叫"city_id"，指向关系维护端City的主键
+//    //inverseJoinColumns定义了一个外键叫"mayor_id",指向关系被维护端Mayor的主键
+//    private Item item;
 
 
     public Long getId() {

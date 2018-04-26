@@ -2,10 +2,7 @@ package com.example.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,13 +19,14 @@ public class Item {
     @ManyToMany(mappedBy = "items")
     private Set<Cart> carts = new HashSet<Cart>();
 
+
     public Item(Long id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public Item(){
+    public Item() {
 
     }
 
